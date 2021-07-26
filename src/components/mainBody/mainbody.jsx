@@ -13,7 +13,7 @@ let MainBody = () => {
   return (
     <div>
       {bikes === undefined || bikes.length === 0 ? "Loading" : bikes.map((res) => (
-        <div name={res.name} className={res.status === 'Available' ? 'mainAvailable' : res.status === 'Busy' ? 'mainBusy' : 'mainUnavailable'} key={res.id}>
+        <div name={res.name} className={res.status === 'Available' ? 'mainAvailable' : res.status === 'Busy' ? 'mainBusy' : res.status === 'Unavailable' ? 'mainUnavailable' : ''} key={res.id}>
           <div className="delete" onClick={()=> dispatch(asyncDeleteBike(res.id))}>
             <div className="firstSpan" />
             <div className="secondSpan" />
@@ -24,7 +24,7 @@ let MainBody = () => {
             <div className="id">
               ID: {res.id}
             </div>
-            <div className="statusBlock">
+            <div className="statusBlock" style={{display: `${res.status.length === 0 ? "none" : ""}`}}>
               <div>STATUS</div>
               <div>
                 <select className="select" value={res.status} onChange={(e) => dispatch(asyncChangeBikesStatus(res.id, e.target.value))}>
@@ -36,7 +36,7 @@ let MainBody = () => {
               </div>
             </div>
           </div>
-          <div className="price">{res.price}  UAH/hr.</div>
+          <div className="price">{res.price.length === 0 ? '' : res.price + '    ' + 'UAH/hr.'}</div>
         </div>
       ))}
       <hr className="vertical" />
