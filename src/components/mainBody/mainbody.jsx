@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncChangeBikesStatus, asyncDeleteBike, asyncGetBikes } from "../../asyncQuery/async";
+import { changeActiveBikeActionCreate } from "../../redux/reducers/bikeReducer";
 import FilterForm from "./filter-form/filter-form";
 import "./main.css"
 let MainBody = () => {
@@ -14,7 +15,7 @@ let MainBody = () => {
   return (
     <div>
       {bikes === undefined || bikes.length === 0 ? "Loading" : bikes.map((res) => (
-        <div name={res.name} className={res.status === 'Available' ? 'mainAvailable' : res.status === 'Busy' ? 'mainBusy' : res.status === 'Unavailable' ? 'mainUnavailable' : ''} key={res.id}>
+        <div name={res.name} className={res.status === 'Available' ? 'mainAvailable' : res.status === 'Busy' ? 'mainBusy' : res.status === 'Unavailable' ? 'mainUnavailable' : ''} key={res.id} onClick={()=> dispatch(changeActiveBikeActionCreate(res.price))}>
           <div className="delete" onClick={()=> dispatch(asyncDeleteBike(res.id))}>
             <div className="firstSpan" />
             <div className="secondSpan" />
