@@ -7,6 +7,7 @@ let MainBody = () => {
   const dispatch = useDispatch();
   const bikes = useSelector(state => state.bikes.bike);
   const stata = useSelector(state => state.bikes);
+  const priceActive = useSelector(state => state.bikes.activeId);
   useEffect(() => {
     dispatch(asyncGetBikes());
   }, [bikes])
@@ -47,7 +48,7 @@ let MainBody = () => {
         <div>Total Bikes: <div style={{ display: "inline-block", fontWeight: "bolder" }}>{stata === undefined ? 0 : stata.totalBike}</div></div>
         <div>Available Bikes:<div style={{ display: "inline-block", fontWeight: "bolder" }}>{stata === undefined ? 0 : stata.availableBike}</div></div>
         <div>Booked Bikes:<div style={{ display: "inline-block", fontWeight: "bolder" }}>{stata === undefined ? 0 : stata.bookedBike}</div></div>
-        <div>Average bike cost: <div style={{ display: "inline-block", fontWeight: "bolder" }}>{stata === undefined ? 0 : 0}</div> UAH/hr.</div>
+        <div>Average bike cost: <div style={{ display: "inline-block", fontWeight: "bolder" }}>{priceActive === undefined || priceActive.length === 0 ? 0 : priceActive}</div> UAH/hr.</div>
       </div>
     </div>
   )
