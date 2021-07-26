@@ -1,0 +1,53 @@
+.footer
+{
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+padding: 10px;
+position: absolute;
+width: 1152px;
+height: 42px;
+right: 0px;
+bottom: 0px;
+background: #696969 !important;
+}
+.dev
+{
+position: static;
+width: 318px;
+height: 38px;
+left: 16px;
+top: 4px;
+font-family: Saira Stencil One;
+font-style: normal;
+font-weight: normal;
+font-size: 23px;
+line-height: 38px;
+color: #E8E8E8;
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 0px 10px;
+}
+.name
+{
+position: static;
+width: 205px;
+height: 31px;
+left: 947px;
+top: 5.5px;
+font-family: Saira;
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+line-height: 31px;
+display: flex;
+align-items: flex-end;
+text-align: center;
+color: #FFFFFF;
+flex: none;
+order: 1;
+flex-grow: 0;
+margin: 0px 10px;
+}
