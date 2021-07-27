@@ -3,7 +3,6 @@ let initial = {
     bookedBike: 0,
     totalBike: 0,
     bike: [{id: '', name: '', type: '', color: '', size: '', price: '', description: '', status: ''}],
-    activeId: [] 
 };
 const GET_BIKES = "GETBIKES";
 const CHANGE_STATUS = "CHANGESTATUS";
