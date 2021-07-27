@@ -12,7 +12,7 @@ const DELETE_BIKE = "DELETEBIKE";
 export let BikesReducer = (state = initial, action) => {
     switch (action.type) {
         case GET_BIKES:
-            return { ...state, bike: action.payload.bikes, availableBike: action.payload.Available, totalBike: action.payload.Total, bookedBike: action.payload.Booked }
+            return { ...state, bike: action.payload.bikes, availableBike: action.payload.Available, totalBike: action.payload.Total, bookedBike: action.payload.Booked, price: action.payload.price }
         case CHANGE_STATUS:
             return {...state, bike: state.bike.map((res)=>{
                 if (res.id === action.id)
