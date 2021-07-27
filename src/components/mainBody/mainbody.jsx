@@ -1,21 +1,19 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncChangeBikesStatus, asyncDeleteBike, asyncGetBikes } from "../../asyncQuery/async";
-import { changeActiveBikeActionCreate } from "../../redux/reducers/bikeReducer";
 import FilterForm from "./filter-form/filter-form";
 import "./main.css"
 let MainBody = () => {
   const dispatch = useDispatch();
   const bikes = useSelector(state => state.bikes.bike);
   const stata = useSelector(state => state.bikes);
-  const priceActive = useSelector(state => state.bikes.activeId);
   useEffect(() => {
     dispatch(asyncGetBikes());
   }, [bikes])
   return (
     <div>
       {bikes === undefined || bikes.length === 0 ? "Loading" : bikes.map((res) => (
-        <div name={res.name} className={res.status === 'Available' ? 'mainAvailable' : res.status === 'Busy' ? 'mainBusy' : res.status === 'Unavailable' ? 'mainUnavailable' : ''} key={res.id} onClick={()=> dispatch(changeActiveBikeActionCreate(res.price))}>
+        <div name={res.name} className={res.status === 'Available' ? 'mainAvailable' : res.status === 'Busy' ? 'mainBusy' : res.status === 'Unavailable' ? 'mainUnavailable' : ''} key={res.id}>
           <div className="delete" onClick={()=> dispatch(asyncDeleteBike(res.id))}>
             <div className="firstSpan" />
             <div className="secondSpan" />
@@ -49,7 +47,7 @@ let MainBody = () => {
         <div>Total Bikes: <div style={{ display: "inline-block", fontWeight: "bolder" }}>{stata === undefined ? 0 : stata.totalBike}</div></div>
         <div>Available Bikes:<div style={{ display: "inline-block", fontWeight: "bolder" }}>{stata === undefined ? 0 : stata.availableBike}</div></div>
         <div>Booked Bikes:<div style={{ display: "inline-block", fontWeight: "bolder" }}>{stata === undefined ? 0 : stata.bookedBike}</div></div>
-        <div>Average bike cost: <div style={{ display: "inline-block", fontWeight: "bolder" }}>{priceActive === undefined || priceActive.length === 0 ? 0 : priceActive}</div> UAH/hr.</div>
+         <div>Average bike cost: <div style={{ display: "inline-block", fontWeight: "bolder" }}>{stata === undefined ? 0 : stata.price}</div> UAH/hr.</div>
       </div>
     </div>
   )
