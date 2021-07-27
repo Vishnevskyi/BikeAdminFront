@@ -9,7 +9,6 @@ const GET_BIKES = "GETBIKES";
 const CHANGE_STATUS = "CHANGESTATUS";
 const INSERT_BIKE = "INSERTBIKE";
 const DELETE_BIKE = "DELETEBIKE";
-const CHANGE_ACTIVE = "CHANGEACTIVE"
 export let BikesReducer = (state = initial, action) => {
     switch (action.type) {
         case GET_BIKES:
@@ -29,8 +28,6 @@ export let BikesReducer = (state = initial, action) => {
             return {...state, bike: [...state, action.payload]}
         case DELETE_BIKE:
             return {...state, bike: state.bike.filter((res)=> res.id !== action.payload)}
-        case CHANGE_ACTIVE:
-            return {...state, activeId: action.payload}
         default:
             return state
     }
@@ -46,7 +43,4 @@ export let insertBikeActionCreate = (payload) => {
 }
 export let deleteBikeActionCreate = (payload) => {
     return { type: DELETE_BIKE, payload}
-}
-export let changeActiveBikeActionCreate = (payload) => {
-    return { type: CHANGE_ACTIVE, payload}
 }
